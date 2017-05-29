@@ -13,10 +13,10 @@
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
-Route::get('/blog/{name?}', function ($name = null) {
-    return view('actions.blog', ['name' => $name]);
+Route::get('/blog/{myname?}', function ($myname = null) {
+    return view('actions.blog', ['myname' => $myname]);
 })->name('blog');
 Route::get('/contact', function () {
     return view('actions.contact');
@@ -24,3 +24,14 @@ Route::get('/contact', function () {
 Route::get('/about', function () {
     return view('actions.about');
 })->name('about');
+
+Route::post('/benice', function(\Illuminate\Http\Request $request){
+  if(isset($request['action']) && $request['myname']){
+    if(strlen($request['myname'])>0){
+
+      return view('actions.'.$request['action'],['myname' => $request['myname']]);
+    }
+    return redirect()->back();
+  }
+  return redirect()->back();
+})->name('benice');
