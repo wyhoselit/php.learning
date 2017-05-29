@@ -1,5 +1,16 @@
 @extends('layouts.master')
 @section('content')
+
+  @if (count($errors) > 0)
+    <div class="">
+        <ul>
+          @foreach($errors->all() as $error)
+          <li>{{ $error }}</li>
+          @endforeach
+        </ul>
+    </div>
+  @endif
+  
     <div class="title m-b-md">
       <form class="" action="{{ route('benice') }}" method="post">
         <label for="select-action">Who u are...</label>

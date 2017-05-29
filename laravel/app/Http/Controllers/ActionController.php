@@ -11,14 +11,14 @@ class ActionController extends Controller
   }
 
   public function postAction(Request $request){
-    if(isset($request['action']) && $request['myname']){
-      if(strlen($request['myname'])>0){
+// https://laravel.com/docs/5.4/validation
+    $this->validate($request,[
+        'action' => 'required',
+        'myname' => 'required|alpha'
+    ]);
+    //actual validation
+    return view('actions.'.$request['action'],['myname' =>$this->changeName($request['myname'])]);
 
-        return view('actions.'.$request['action'],['myname' =>$this->changeName($request['myname'])]);
-      }
-      return redirect()->back();
-    }
-    return redirect()->back();
   }
 
   private function changeName($myname){

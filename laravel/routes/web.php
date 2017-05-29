@@ -10,7 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('home');
 })->name('home');
@@ -24,4 +23,10 @@ Route::Group(['prefix' => 'do'], function(){
      'uses' => 'ActionController@postAction',
      'as' => 'benice'
   ]);
+});
+
+
+Route::group(['middleware' =>['web']], function(){
+
+
 });
