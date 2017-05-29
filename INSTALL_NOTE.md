@@ -73,3 +73,9 @@ composer create-project laravel/laravel /php/laravel --prefer-dist
 
 sudo chgrp -R www-data /php/laravel
 sudo chmod -R 775 /php/laravel/storage
+
+<!-- https://github.com/FriendsOfPHP/PHP-CS-Fixer  -->
+composer global require friendsofphp/php-cs-fixer
+
+add .bashrc_custom
+export PATH="$PATH:$HOME/.config/composer/vendor/bin"
