@@ -14,3 +14,14 @@
 Route::get('/', function () {
     return view('home');
 });
+
+
+Route::get('/blog', function () {
+    return view('actions.blog');
+})->name('blog');
+Route::get('/contact', function () {
+    return view('actions.contact');
+})->name('contact');
+Route::get('/about', function () {
+    return view('actions.about');
+})->name('about');

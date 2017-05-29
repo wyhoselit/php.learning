@@ -1,9 +1,9 @@
 <div class="flex-center">
       <div class="links">
         <a href="#">Home</a>
-        <a href="#">Blog</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
+        <a href="{{ route('blog') }}">Blog</a>
+        <a href="{{ route('about') }}">About</a>
+        <a href="{{ route('contact')}}">Contact</a>
           <a href="https://laravel.com/docs">Documentation</a>
           <a href="https://laracasts.com">Laracasts</a>
           <a href="https://laravel-news.com">News</a>
