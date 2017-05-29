@@ -2,7 +2,7 @@
 
 sudo apt install nginx
 
-sudo apt install php7.0-fpm php7.0-cli php7.0-mcrypt  php-mbstring php-xml
+sudo apt install php7.0-fpm php7.0-cli php7.0-mcrypt  php-mbstring php-xml php-mysql
 php --ini
 php -m
 
@@ -79,3 +79,16 @@ composer global require friendsofphp/php-cs-fixer
 
 add .bashrc_custom
 export PATH="$PATH:$HOME/.config/composer/vendor/bin"
+
+
+mysql -u root -p
+  CREATE DATABASE laravelDB CHARACTER SET utf8;
+  GRANT ALL PRIVILEGES ON laravelDB.* TO 'oselit'@'localhost' IDENTIFIED BY 'secretpassword';
+
+nano lareval/.env
+
+<!-- php artisan migrate -->
+sudo php artisan migrate
+
+php artisan make:model Action -m
+php artisan migrate
