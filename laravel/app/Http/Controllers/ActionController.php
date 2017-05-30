@@ -5,14 +5,18 @@ namespace App\Http\Controllers;
 use \Illuminate\Http\Request;
 use App\Action;
 use App\ActionLogs;
-
+use DB;
 class ActionController extends Controller
 {
 
   public function getHome(){
     $actions = Action::all();
+    // $actions = DB::table('actions')->get();
+
     $logged_actions = ActionLogs::all();
-    return view('home',['actions' => $actions,'logged_actions'=>$logged_actions]);
+    $query = DB::table('action_logs')
+            ->join('actions','action_logs.action_id','=','actions.id')->get();
+    return view('home',['actions' => $actions,'logged_actions'=>$logged_actions,'query'=>$query]);
   }
 
   public function getAction($actionName, $myname = null){
