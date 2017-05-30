@@ -92,3 +92,4 @@ sudo php artisan migrate
 
 php artisan make:model Action -m
 php artisan migrate
+php artisan make:seed ActionSeeder

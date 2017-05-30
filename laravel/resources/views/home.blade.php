@@ -1,5 +1,9 @@
 @extends('layouts.master')
 @section('content')
+@foreach($actions as $action)
+  <a href="{{ route('action',['action'=> strtolower($action->name) ])}}">{{ $action->name }}</a>
+@endforeach
+
 
   @if (count($errors) > 0)
     <div class="">
@@ -10,7 +14,7 @@
         </ul>
     </div>
   @endif
-  
+
     <div class="title m-b-md">
       <form class="" action="{{ route('benice') }}" method="post">
         <label for="select-action">Who u are...</label>

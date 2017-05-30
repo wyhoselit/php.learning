@@ -1,6 +1,10 @@
 <div class="flex-center">
       <div class="links">
+
+
+
         <a href="{{ route('home') }}">Home</a>
+
         <a href="{{ route('action', ['action' => 'blog']) }}">Blog</a>
         <a href="{{ route('action', ['action' => 'about']) }}">About</a>
         <a href="{{ route('action', ['action' => 'contact']) }}">Contact</a>

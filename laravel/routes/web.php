@@ -10,9 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [
+  'uses' => 'ActionController@getHome',
+  'as' => 'home'
+]);
 
 Route::Group(['prefix' => 'do'], function(){
   Route::get('/{action}/{myname?}', [

@@ -3,11 +3,21 @@
 namespace App\Http\Controllers;
 
 use \Illuminate\Http\Request;
-
+use App\Action;
 class ActionController extends Controller
 {
+
+  public function getHome(){
+    $actions = Action::all();
+    return view('home',['actions' => $actions]);
+  }
+
   public function getAction($action, $myname = null){
-    return view('actions.'.$action, ['myname' => $myname]);
+
+    if($myname === null){
+      $myname = 'osElit';
+    }
+    return view('actions.action', ['action' => $action,'myname' => $myname]);
   }
 
   public function postAction(Request $request){

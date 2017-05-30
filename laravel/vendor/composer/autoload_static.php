@@ -272,6 +272,7 @@ class ComposerStaticInit65202798d16d0306d191ce263ec782ed
     );
 
     public static $classMap = array (
+        'ActionSeeder' => __DIR__ . '/../..' . '/database/seeds/ActionSeeder.php',
         'App\\Action' => __DIR__ . '/../..' . '/app/Action.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
