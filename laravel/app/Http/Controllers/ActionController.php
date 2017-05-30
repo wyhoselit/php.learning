@@ -10,12 +10,26 @@ class ActionController extends Controller
 {
 
   public function getHome(){
-    $actions = Action::all();
+    $actions = Action::orderby('vote','desc')->get();
     // $actions = DB::table('actions')->get();
 
-    $logged_actions = ActionLogs::all();
+    $logged_actions = ActionLogs::whereHas('action', function($query){
+        $query->where('name','=','Blog');
+        })->get();
     $query = DB::table('action_logs')
-            ->join('actions','action_logs.action_id','=','actions.id')->get();
+            ->join('actions','action_logs.action_id','=','actions.id')
+            ->where('actions.name','=','Blog')
+            ->get();
+
+        $query = DB::table('action_logs')
+                ->join('actions','action_logs.action_id','=','actions.id')
+                // ->where('actions.name','=','Blog')
+                ->count();
+          
+          $query = DB::table('action_logs')
+                  ->join('actions','action_logs.action_id','=','actions.id')
+                  // ->where('actions.name','=','Blog')
+                  ->max('action_id');
     return view('home',['actions' => $actions,'logged_actions'=>$logged_actions,'query'=>$query]);
   }
 
