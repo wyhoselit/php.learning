@@ -21,15 +21,31 @@ class ActionController extends Controller
             ->where('actions.name','=','Blog')
             ->get();
 
-        $query = DB::table('action_logs')
-                ->join('actions','action_logs.action_id','=','actions.id')
-                // ->where('actions.name','=','Blog')
-                ->count();
-          
-          $query = DB::table('action_logs')
-                  ->join('actions','action_logs.action_id','=','actions.id')
-                  // ->where('actions.name','=','Blog')
-                  ->max('action_id');
+    $query = DB::table('action_logs')
+            ->join('actions','action_logs.action_id','=','actions.id')
+            // ->where('actions.name','=','Blog')
+            ->count();
+
+    $query = DB::table('action_logs')
+            ->join('actions','action_logs.action_id','=','actions.id')
+            // ->where('actions.name','=','Blog')
+            ->max('action_id');
+    $query = DB::table('action_logs')
+        ->insert([
+          'action_id' => DB::table('actions')
+                          ->select('id')
+                          ->where('name','Blog')
+                          ->first()
+                          ->id
+        ]);
+    $query = DB::table('action_logs')
+        ->insertGetId([
+          'action_id' => DB::table('actions')
+                          ->select('id')
+                          ->where('name','Blog')
+                          ->first()
+                          ->id
+        ]);
     return view('home',['actions' => $actions,'logged_actions'=>$logged_actions,'query'=>$query]);
   }
 
