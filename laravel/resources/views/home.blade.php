@@ -38,11 +38,18 @@
       @foreach($logged_actions as $logged_action)
       <li> {{ $logged_action->action->name }}</li>
         @foreach($logged_action->action->categories as $category)
-          <li>{{$category->name}}</li>
+          {{$category->name}}
         @endforeach
       @endforeach
 
       </ul>
+      {!! $logged_actions->links();  !!}
+
+      @if($logged_actions->lastPage() > 1)
+        @for($i=1; $i<=$logged_actions->lastPage();$i++)
+        <a href="{{ $logged_actions->url($i) }}">{{ $i }}</a>
+        @endfor
+      @endif
     </div>
     <ul>
       @for($i=0; $i<5;$i++)
@@ -51,5 +58,4 @@
         @endif
       @endfor
     </ul>
-    {{ dd($query) }}
 @endsection

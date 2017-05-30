@@ -15,48 +15,52 @@ class ActionController extends Controller
 
     $logged_actions = ActionLogs::whereHas('action', function($query){
         $query->where('name','=','Blog');
-        })->get();
-    $query = DB::table('action_logs')
-            ->join('actions','action_logs.action_id','=','actions.id')
-            ->where('actions.name','=','Blog')
-            ->get();
-
-    $query = DB::table('action_logs')
-            ->join('actions','action_logs.action_id','=','actions.id')
-            // ->where('actions.name','=','Blog')
-            ->count();
-
-    $query = DB::table('action_logs')
-            ->join('actions','action_logs.action_id','=','actions.id')
-            // ->where('actions.name','=','Blog')
-            ->max('action_id');
-    $query = DB::table('action_logs')
-        ->insert([
-          'action_id' => DB::table('actions')
-                          ->select('id')
-                          ->where('name','Blog')
-                          ->first()
-                          ->id
-        ]);
-    $query = DB::table('action_logs')
-        ->insertGetId([
-          'action_id' => DB::table('actions')
-                          ->select('id')
-                          ->where('name','Blog')
-                          ->first()
-                          ->id
-        ]);
-    $newaction = Action::where('name','like','newaction%')
-        ->first();
-        if($newaction){
-          $newaction->name = $newaction->name.'-update';
-          $newaction->update();
-        }
-    $firstlogDel = ActionLogs::first();
-    if($firstlogDel){
-      $firstlogDel->delete();
-    }
-    return view('home',['actions' => $actions,'logged_actions'=>$logged_actions,'query'=>$query]);
+        })
+        ->paginate(5);
+        // ->take(5)
+        // ->get();
+    // $query = DB::table('action_logs')
+    //         ->join('actions','action_logs.action_id','=','actions.id')
+    //         ->where('actions.name','=','Blog')
+    //         ->get();
+    //
+    // $query = DB::table('action_logs')
+    //         ->join('actions','action_logs.action_id','=','actions.id')
+    //         // ->where('actions.name','=','Blog')
+    //         ->count();
+    //
+    // $query = DB::table('action_logs')
+    //         ->join('actions','action_logs.action_id','=','actions.id')
+    //         // ->where('actions.name','=','Blog')
+    //         ->max('action_id');
+    // $query = DB::table('action_logs')
+    //     ->insert([
+    //       'action_id' => DB::table('actions')
+    //                       ->select('id')
+    //                       ->where('name','Blog')
+    //                       ->first()
+    //                       ->id
+    //     ]);
+    // $query = DB::table('action_logs')
+    //     ->insertGetId([
+    //       'action_id' => DB::table('actions')
+    //                       ->select('id')
+    //                       ->where('name','Blog')
+    //                       ->first()
+    //                       ->id
+    //     ]);
+    // $newaction = Action::where('name','like','newaction%')
+    //     ->first();
+    //     if($newaction){
+    //       $newaction->name = $newaction->name.'-update';
+    //       $newaction->update();
+    //     }
+    // $firstlogDel = ActionLogs::first();
+    // if($firstlogDel){
+    //   $firstlogDel->delete();
+    // }
+    // ,'query'=>$query
+    return view('home',['actions' => $actions,'logged_actions'=>$logged_actions]);
   }
 
   public function getAction($actionName, $myname = null){
