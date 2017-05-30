@@ -46,6 +46,16 @@ class ActionController extends Controller
                           ->first()
                           ->id
         ]);
+    $newaction = Action::where('name','like','newaction%')
+        ->first();
+        if($newaction){
+          $newaction->name = $newaction->name.'-update';
+          $newaction->update();
+        }
+    $firstlogDel = ActionLogs::first();
+    if($firstlogDel){
+      $firstlogDel->delete();
+    }
     return view('home',['actions' => $actions,'logged_actions'=>$logged_actions,'query'=>$query]);
   }
 
