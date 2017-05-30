@@ -20,9 +20,9 @@ Route::Group(['prefix' => 'do'], function(){
       'uses' => 'ActionController@getAction',
       'as' => 'action'
     ]);
-  Route::post('/', [
-     'uses' => 'ActionController@postAction',
-     'as' => 'benice'
+  Route::post('/add_action', [
+     'uses' => 'ActionController@postInsertAction',
+     'as' => 'add_action'
   ]);
 });
 

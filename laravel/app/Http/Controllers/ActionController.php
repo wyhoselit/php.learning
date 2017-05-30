@@ -20,15 +20,17 @@ class ActionController extends Controller
     return view('actions.action', ['action' => $action,'myname' => $myname]);
   }
 
-  public function postAction(Request $request){
+  public function postInsertAction(Request $request){
 // https://laravel.com/docs/5.4/validation
     $this->validate($request,[
-        'action' => 'required',
-        'myname' => 'required|alpha'
+        'actionVote' => 'required|numeric',
+        'name' => 'required|unique:actions'
     ]);
-    //actual validation
-    return view('actions.'.$request['action'],['myname' =>$this->changeName($request['myname'])]);
-
+    $action = new Action();
+    $action->name =ucfirst(strtolower($request->name));
+    $action->vote = $request->actionVote;
+    $action->save();
+    return redirect()->route('home');
   }
 
   private function changeName($myname){
