@@ -32,7 +32,17 @@
       <li> <a href="{{ route('action',['action'=> strtolower($action->name) ])}}">{{ $action->name }}</a></li>
       @endforeach
     </ul>
+    <div class="">
+      <p>
+        Logs
+      </p>
+      <ul>
+      @foreach($logged_actions as $logged_action)
+      <li> {{ $logged_action->action->name }}</li>
+      @endforeach
 
+      </ul>
+    </div>
     <ul>
       @for($i=0; $i<5;$i++)
         @if($i%2 === 0)

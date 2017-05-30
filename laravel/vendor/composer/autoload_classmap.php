@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'ActionSeeder' => $baseDir . '/database/seeds/ActionSeeder.php',
     'App\\Action' => $baseDir . '/app/Action.php',
+    'App\\ActionLogs' => $baseDir . '/app/ActionLogs.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\ActionController' => $baseDir . '/app/Http/Controllers/ActionController.php',
@@ -30,6 +31,7 @@ return array(
     'Carbon\\Carbon' => $vendorDir . '/nesbot/carbon/src/Carbon/Carbon.php',
     'Carbon\\CarbonInterval' => $vendorDir . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
     'Carbon\\Exceptions\\InvalidDateException' => $vendorDir . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
+    'CreateActionLogsTable' => $baseDir . '/database/migrations/2017_05_30_081112_create_action_logs_table.php',
     'CreateActionsTable' => $baseDir . '/database/migrations/2017_05_29_140826_create_actions_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
