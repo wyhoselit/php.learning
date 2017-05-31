@@ -79,7 +79,7 @@ add .bashrc_custom
 export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 
 
-laravel new blog
+laravel new laravel
 
 sudo chgrp -R www-data /php/laravel
 sudo chmod -R 775 /php/laravel/storage
@@ -92,7 +92,7 @@ mysql -u root -p
 nano lareval/.env
 
 <!-- php artisan migrate -->
-sudo php artisan migrate
+php artisan migrate
 
 php artisan make:model Action -m
 php artisan migrate

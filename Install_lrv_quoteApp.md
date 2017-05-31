@@ -50,4 +50,6 @@ mysql -u root -p
   CREATE DATABASE quoteappDB CHARACTER SET utf8;
   GRANT ALL PRIVILEGES ON quoteappDB.* TO 'oselit'@'localhost' IDENTIFIED BY 'secretpassword';
 
-nano lrv_quoteapp/.env
+edit lrv_quoteapp/.env
+cd lrv_quoteapp
+php artisan migrate
