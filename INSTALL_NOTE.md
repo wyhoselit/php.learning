@@ -2,12 +2,12 @@
 
 sudo apt install nginx
 
-sudo apt install php7.0-fpm php7.0-cli php7.0-mcrypt  php-mbstring php-xml php-mysql
+sudo apt install php7.0-fpm php7.0-cli php7.0-mcrypt  php-mbstring php-xml php-mysql php-zip
 php --ini
 php -m
 
 
-mkdir -p /php/laravel
+mkdir -p /php
 
 echo "
 server {
@@ -16,7 +16,7 @@ server {
   server_name   laravel;
 
 ## redirect http to https ##
-#  rewrite        ^ https://$server_name$request_uri? permanent;
+#  rewrite        ^ https://$server_name\$request_uri? permanent;
 
   root         /php/laravel/public;
   index index.php index.html index.htm;
@@ -25,14 +25,14 @@ server {
   error_log     /var/log/nginx/laravel-error.log;
 
   location / {
-    try_files $uri $uri/ /index.php?$query_string;
+    try_files \$uri \$uri/ /index.php?\$query_string;
   }
     location ~ \.php$ {
-        try_files $uri /index.php =404;
+        try_files \$uri /index.php =404;
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
         fastcgi_pass unix:/var/run/php/php7.0-fpm.sock;
         fastcgi_index index.php;
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
         include fastcgi_params;
     }
 
@@ -70,15 +70,19 @@ sudo mv composer.phar /usr/local/bin/composer
 # composer create-project laravel/laravel /var/www/html/laravel --prefer-dist
 
 composer create-project laravel/laravel /php/laravel --prefer-dist
-
-sudo chgrp -R www-data /php/laravel
-sudo chmod -R 775 /php/laravel/storage
-
+(or)
+composer global require "laravel/installer"
 <!-- https://github.com/FriendsOfPHP/PHP-CS-Fixer  -->
 composer global require friendsofphp/php-cs-fixer
 
 add .bashrc_custom
 export PATH="$PATH:$HOME/.config/composer/vendor/bin"
+
+
+laravel new blog
+
+sudo chgrp -R www-data /php/laravel
+sudo chmod -R 775 /php/laravel/storage
 
 
 mysql -u root -p
