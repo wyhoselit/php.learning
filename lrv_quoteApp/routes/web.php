@@ -10,7 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+//
+Route::get('/', [
+  'uses' => 'QuoteController@getIndex',
+  'as' => 'home'
+]);
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::post('/new', [
+ 'uses' => 'QuoteController@postQuote',
+ 'as' => 'create'
+]);

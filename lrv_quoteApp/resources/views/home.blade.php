@@ -26,7 +26,7 @@ Quote App Tutorial
 </section>
 <section class="edit-quote">
   <h1>Add a Quote</h1>
-  <form class="" action="index.html" method="post">
+  <form class="" action="{{ route('create') }}" method="post">
     <div class="input-group">
       <label for="author">Your Name</label>
       <input type="text" name="author" id="author" placeholder="Your Name">
@@ -35,7 +35,7 @@ Quote App Tutorial
       <label for="quote">Your Quote</label>
       <textarea name="quote" id="quote" placeholder="Quote" rows="8" cols="40"></textarea>
     </div>
-    <input type="hidden" name="_token" value="{{Session::token()}}">
+    <input type="hidden" name="_token" value="{{ Session::token() }}">
     <button type="submit" class="btn" name="submit">Submit Quote</button>
   </form>
 </section>
