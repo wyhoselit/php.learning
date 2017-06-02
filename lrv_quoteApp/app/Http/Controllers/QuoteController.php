@@ -8,8 +8,9 @@ use App\Quote;
 
 class QuoteController extends Controller
 {
-  public function getIndex(){
-    return view('home');
+  public function getHome(){
+    $quotes = Quote::all();
+    return view('home',['quotes'=>$quotes]);
   }
 
   public function postQuote(Request $request){

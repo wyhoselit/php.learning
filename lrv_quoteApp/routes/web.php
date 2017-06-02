@@ -12,7 +12,7 @@
 */
 //
 Route::get('/', [
-  'uses' => 'QuoteController@getIndex',
+  'uses' => 'QuoteController@getHome',
   'as' => 'home'
 ]);
 

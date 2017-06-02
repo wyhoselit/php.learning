@@ -13,15 +13,18 @@ Quote App Tutorial
     Latest Quotes
 </div>
 <section class="quotes">
-  <article class="quote">
+
+@for($i=0; $i < count($quotes); $i++)
+  <article class="quote {{$i % 3 === 0? 'first-in-line': ($i+1)%3 === 0 ? 'last-in-line': ''}}">
     <div class="delete">
       <a href="#">X</a>
     </div>
-    Quote textarea
+    {{$quotes[$i]->quote}}
     <div class="info">
-      Create by <a href="#">user</a> on time
+      Create by <a href="#">{{ $quotes[$i]->author->name }}</a> on {{$quotes[$i]->updated_at}}
     </div>
   </article>
+@endfor
   pagination
 </section>
 <section class="edit-quote">

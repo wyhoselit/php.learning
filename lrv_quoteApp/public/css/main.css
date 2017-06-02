@@ -65,12 +65,12 @@ html, body {
   margin: 32px;
   padding: 16px;
   vertical-align: top;
-  background-color: #fff640;
+  background-color: #f6ff93;
 }
 .quote.first-in-line {
   margin-left: 0;
 }
-.quote.last-inline {
+.quote.last-in-line {
   margin-right: 0;
 }
 .quote .info {
