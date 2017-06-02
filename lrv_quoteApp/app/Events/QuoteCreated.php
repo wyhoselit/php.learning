@@ -13,7 +13,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 class QuoteCreated
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-
+    // public $author;
     /**
      * Create a new event instance.
      *
@@ -21,7 +21,7 @@ class QuoteCreated
      */
     public function __construct($author)
     {
-        $this->author == $author;
+        $this->author = $author->name;
     }
 
     /**

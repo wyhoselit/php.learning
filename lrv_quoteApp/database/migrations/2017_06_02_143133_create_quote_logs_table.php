@@ -16,7 +16,7 @@ class CreateQuoteLogsTable extends Migration
         Schema::create('quote_log', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('Author');
+            $table->string('author');
         });
     }
 
