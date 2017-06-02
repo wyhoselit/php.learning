@@ -26,6 +26,9 @@ class CreateLogEntry
      */
     public function handle(QuoteCreated $event)
     {
-        //
+        $author = $event->author;
+        $log_entry = new QuoteLog();
+        $log_entry->author = $author;
+        $log_entry->save();
     }
 }

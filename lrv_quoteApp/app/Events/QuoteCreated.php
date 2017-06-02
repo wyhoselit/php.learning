@@ -19,9 +19,9 @@ class QuoteCreated
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($author)
     {
-        //
+        $this->author == $author;
     }
 
     /**
