@@ -8,8 +8,21 @@ use App\Quote;
 
 class QuoteController extends Controller
 {
-  public function getHome(){
-    $quotes = Quote::all();
+  public function getHome($author = null){
+    $quotes = null;
+    if(!is_null($author)){
+      $filter_author = Author::where('name','like','%'.$author.'%')->first();
+      if($filter_author){
+        $quotes = $filter_author
+                ->quotes()
+                ->orderBy('created_at','desc')
+                ->get();
+      }
+    }
+    if(is_null($quotes) || !$quotes){
+      $quotes = Quote::orderBy('created_at','desc')->get();
+    }
+
     return view('home',['quotes'=>$quotes]);
   }
 

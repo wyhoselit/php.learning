@@ -9,11 +9,16 @@ Quote App Tutorial
 
 
 @section('content')
+
 <div class="title m-b-md">
     Latest Quotes
 </div>
 <section class="quotes">
-
+  @if(!empty(Request::segment(1)))
+  <section class="filter-bar">
+      Filter by "{{Request::segment(1)}}", <a href="{{route('home')}}">Show All</a>
+  </section>
+  @endif
 @for($i=0; $i < count($quotes); $i++)
   <article class="quote {{$i % 3 === 0? 'first-in-line': ($i+1)%3 === 0 ? 'last-in-line': ''}}">
     <div class="delete">
@@ -21,7 +26,7 @@ Quote App Tutorial
     </div>
     {{$quotes[$i]->quote}}
     <div class="info">
-      Create by <a href="#">{{ $quotes[$i]->author->name }}</a> on {{$quotes[$i]->updated_at}}
+      Create by <a href="{{ route('home',['author'=> $quotes[$i]->author->name])}}">{{ $quotes[$i]->author->name }}</a> on {{$quotes[$i]->updated_at}}
     </div>
   </article>
 @endfor
