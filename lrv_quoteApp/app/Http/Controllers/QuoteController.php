@@ -10,17 +10,19 @@ class QuoteController extends Controller
 {
   public function getHome($author = null){
     $quotes = null;
+    $msg = "";
     if(!is_null($author)){
       $filter_author = Author::where('name','like','%'.$author.'%')->first();
       if($filter_author){
         $quotes = $filter_author
                 ->quotes()
                 ->orderBy('created_at','desc')
-                ->get();
+                ->paginate(6);
       }
     }
     if(is_null($quotes) || !$quotes){
-      $quotes = Quote::orderBy('created_at','desc')->get();
+      $quotes = Quote::orderBy('created_at','desc')
+              ->paginate(6);
     }
 
     return view('home',['quotes'=>$quotes]);
