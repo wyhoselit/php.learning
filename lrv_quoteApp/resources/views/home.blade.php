@@ -29,6 +29,8 @@ Quote App Tutorial
 </section>
 <section class="edit-quote">
   <h1>Add a Quote</h1>
+
+
   <form class="" action="{{ route('create') }}" method="post">
     <div class="input-group">
       <label for="author">Your Name</label>
@@ -39,6 +41,18 @@ Quote App Tutorial
       <textarea name="quote" id="quote" placeholder="Quote" rows="8" cols="40"></textarea>
     </div>
     <input type="hidden" name="_token" value="{{ Session::token() }}">
+    @if( count($errors) > 0)
+    <section class="info-box fail">
+        @foreach($errors->all() as $error)
+          {{ $error }}
+          @endforeach
+    </section>
+    @endif
+    @if(Session::has('success'))
+    <section class="info-box success">
+      {{ Session::get('success') }}
+    </section>
+    @endif
     <button type="submit" class="btn" name="submit">Submit Quote</button>
   </form>
 </section>
