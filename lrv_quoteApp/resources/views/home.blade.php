@@ -17,7 +17,7 @@ Quote App Tutorial
 @for($i=0; $i < count($quotes); $i++)
   <article class="quote {{$i % 3 === 0? 'first-in-line': ($i+1)%3 === 0 ? 'last-in-line': ''}}">
     <div class="delete">
-      <a href="#">X</a>
+      <a href="{{ route('delete',['quote_id' => $quotes[$i]->id]) }}">X</a>
     </div>
     {{$quotes[$i]->quote}}
     <div class="info">

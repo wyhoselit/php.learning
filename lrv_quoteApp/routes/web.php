@@ -20,3 +20,8 @@ Route::post('/new', [
  'uses' => 'QuoteController@postQuote',
  'as' => 'create'
 ]);
+
+Route::get('/delte/{quote_id}', [
+ 'uses' => 'QuoteController@deleteQuote',
+ 'as' => 'delete'
+]);
