@@ -13,9 +13,10 @@ class CreateQuoteLogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('quote_logs', function (Blueprint $table) {
+        Schema::create('quote_log', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->string('Author');
         });
     }
 
@@ -26,6 +27,6 @@ class CreateQuoteLogsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('quote_logs');
+        Schema::dropIfExists('quote_log');
     }
 }
