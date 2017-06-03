@@ -25,3 +25,8 @@ Route::get('/delte/{quote_id}', [
  'uses' => 'QuoteController@deleteQuote',
  'as' => 'delete'
 ]);
+
+Route::get('/gotemail/{author_name}', [
+  'uses'=> 'QuoteController@getMailCallback',
+  'as' => 'mail_callback'
+]);
