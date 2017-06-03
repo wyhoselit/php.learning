@@ -11,6 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [
+  'uses' => 'PostController@getBlogIndex',
+  'as' => 'blog.index'
+]);
+
+Route::get('/blog', [
+  'uses' => 'PostController@getBlogIndex',
+  'as' => 'blog.index'
+]);
+Route::get('/blog/{post_id}', [
+  'uses' => 'PostController@getSingleBlog',
+  'as' => 'blog.single'
+]);
