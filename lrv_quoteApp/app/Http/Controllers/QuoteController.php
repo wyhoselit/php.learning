@@ -46,6 +46,7 @@ class QuoteController extends Controller
       //if new add new author in db.
       $author = new Author();
       $author->name = $authorText;
+      $author->email = $request->email;
       $author->save();
     }
     $quote = new Quote();
