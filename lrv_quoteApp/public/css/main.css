@@ -117,8 +117,10 @@ html, body {
   font-size: inherit;
   padding: 4px 8px;
 }
-.input-group #author {
-  width: 200px;
+.input-group #author,
+.input-group #email,
+ {
+  width: 400px;
 }
 .input-group textarea {
   width: 400px;

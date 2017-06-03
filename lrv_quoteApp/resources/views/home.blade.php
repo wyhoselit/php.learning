@@ -49,6 +49,10 @@ Quote App Tutorial
       <input type="text" name="author" id="author" placeholder="Your Name">
     </div>
     <div class="input-group">
+      <label for="email">Your E-mail</label>
+      <input type="text" name="email" id="email" placeholder="Your Email">
+    </div>
+    <div class="input-group">
       <label for="quote">Your Quote</label>
       <textarea name="quote" id="quote" placeholder="Quote" rows="8" cols="40"></textarea>
     </div>
