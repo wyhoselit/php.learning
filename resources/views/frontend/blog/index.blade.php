@@ -3,6 +3,10 @@
   Blog Index
 @endsection
 
+@section('styles')
+
+@endsection
+
 @section('content')
   <article class="">
     <h3>Post Title</h3>

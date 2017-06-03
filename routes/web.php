@@ -24,3 +24,14 @@ Route::get('/blog/{post_id}', [
   'uses' => 'PostController@getSingleBlog',
   'as' => 'blog.single'
 ]);
+
+/*other Routes*/
+
+Route::get('/about', function(){
+  return view('frontend/other.about');
+  }
+)->name('about');
+Route::get('/contact', [
+  'uses' => 'ContactMessageController@getContactIndex',
+  'as' => 'contact.index'
+]);
