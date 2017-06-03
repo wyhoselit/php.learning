@@ -13,9 +13,10 @@ class CreateAuthorLogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('author_logs', function (Blueprint $table) {
+        Schema::create('author_log', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->string('author');
         });
     }
 
