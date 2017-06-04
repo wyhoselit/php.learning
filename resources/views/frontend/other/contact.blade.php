@@ -4,12 +4,12 @@
 @endsection
 
 @section('styles')
-  <link rel="stylesheet" href="{{ URL::to('src/css/form.css') }}">
+  <link rel="stylesheet" href="{{ URL::to('css/form.css') }}">
 @endsection
 
 @section('content')
   @include('includes.info-box')
-  <form class="" action="index.html" method="post" id="contact-form">
+  <form  action="index.html" method="post" id="contact-form">
     <div class="input-group">
       <label for="name">Your Name</label>
       <input type="text" name="name" id="name" placeholder="Your Name">
@@ -28,7 +28,7 @@
     <label for="message">Message</label>
     <textarea name="message" id="message" rows="8" cols="80" placeholder="Message"></textarea>
     </div>
-    <button type="submit" name="btn">Submit</button>
+    <button type="submit" name="btn" class="btn">Submit</button>
     <input type="hidden" name="_token" value="{{ Session::token() }}">
   </form>
 @endsection

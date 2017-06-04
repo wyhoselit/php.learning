@@ -1,6 +1,7 @@
 @section('styles')
-  <link rel="stylesheet" href="{{ URL::to('src/css/comman.css')}}">
+  <link rel="stylesheet" href="{{ URL::to('css/common.css')}}">
 @append
+
 @if(Session::has('fail'))
   <section class="info-box fail">
     {{ Session::get('fail')}}
@@ -19,7 +20,7 @@
     @foreach($errors as $error)
       <li>{{$error}}</li>
     @endforeach
-    
+
   </ul>
 </section>
 

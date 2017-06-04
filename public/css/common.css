@@ -1,0 +1,19 @@
+.info-box {
+  text-align: left;
+  width: auto;
+  max-width: 250px;
+  margin: auto;
+  padding: 16px;
+  border-radius: 3px;
+}
+
+.info-box.fail {
+  border: 1px solid #F40909;
+  background-color: #FEA397 ;
+  color: #F40909;
+}
+.info-box.success{
+  border: 1px solid #5DAF00;
+  background-color: #BAFFB1;
+  color: #5DAF00;
+}
