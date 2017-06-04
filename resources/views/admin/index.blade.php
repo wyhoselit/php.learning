@@ -11,7 +11,7 @@
         <header>
           <nav>
             <ul>
-              <li><a href="#" class="btn">New Post</a></li>
+              <li><a href="{{route('admin.blog.create.post')}}" class="btn">New Post</a></li>
               <li><a href="#" class="btn">Show all Posts</a></li>
             </ul>
           </nav>

@@ -17,8 +17,8 @@
 @if(count($errors) > 0)
 <section class="info-box fail">
   <ul>
-    @foreach($errors as $error)
-      <li>{{$error}}</li>
+    @foreach($errors->all() as $error)
+      <li>{{ $error }}</li>
     @endforeach
 
   </ul>
