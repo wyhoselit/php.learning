@@ -1,9 +1,10 @@
 <header class="top-nav">
-  <nav class="main-nav">
+  <nav>
     <ul>
       <li><a href="#">Dashboard</a></li>
       <li><a href="#">Posts</a></li>
       <li><a href="#">Categories</a></li>
+      <li><a href="#">Contact Message</a></li>
       <li><a href="#">Logout</a></li>
     </ul>
   </nav>
