@@ -35,3 +35,15 @@ Route::get('/contact', [
   'uses' => 'ContactMessageController@getContactIndex',
   'as' => 'contact.index'
 ]);
+
+Route::group([
+  'prefix' => '/admin'
+],function(){
+
+  Route::get('/',[
+    'uses' => 'AdminController@getIndex',
+    'as' =>'admin.index'
+  ]);
+  
+
+});
