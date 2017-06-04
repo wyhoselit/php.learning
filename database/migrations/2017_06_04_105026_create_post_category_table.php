@@ -13,7 +13,13 @@ class CreatePostCategoryTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('posts_categories',function (Blueprint $table){
+            $table->increments('id');
+            $table->timestamps();
+            $table->integer('post_id');
+            $table->integer('category_id');
+        });
+
     }
 
     /**
@@ -23,6 +29,6 @@ class CreatePostCategoryTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('post_categories');
     }
 }
