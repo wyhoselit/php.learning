@@ -28,14 +28,17 @@ class PostController extends Controller
 
 
   public function getSingleBlog($post_id,$end='frontend'){
-
+    $post = Post::find($post_id);
+    if(!$post)
+    {
+      return redirect()->route('blog.index')->with(['fail'=> "Post $post_id not found"]);
+    }
     //fetch $post_id
-    return view($end . '.blog.single');
+    return view($end . '.blog.single',['post'=>$post]);
   }
 
   public function getCreatePost()
   {
-
     return view('admin.blog.create_post');
   }
 
@@ -57,6 +60,50 @@ class PostController extends Controller
           ->route('admin.index')
           ->with(['success'=> 'Post successfuly created']);
   }
+
+    public function getUpdatePost($post_id)
+    {
+      $post = Post::find($post_id);
+      if(!$post){
+        return redirect()->route('blog.index')->with(['fail'=> 'Cannot get post for $post_id']);
+      }
+      //Find Category
+      return view('admin.blog.edit_post',['post'=> $post]);
+    }
+
+    public function postUpdatePost(Request $request){
+      $this->validate($request,[
+        'post_id'=>'required|integer',
+        'title'=> 'required|max:120',
+        'author'=> 'required|max:80',
+        'body'=> 'required'
+      ]);
+      $post = Post::find($request->post_id);
+      $post->title = $request->title;
+      $post->author = $request->author;
+      $post->body = $request->body;
+      $isok = $post->update();
+      //Attach Categories;
+
+
+      return redirect()
+            ->route('admin.index')
+            ->with(['success'=> 'Post successfuly Updated']);
+    }
+
+    public function getDeletePost($post_id)
+    {
+      $post = Post::find($post_id);
+      if(!$post){
+        return redirect()->route('blog.index')->with(['fail'=> "Cannot get post for $post_id"]);
+      }
+      $post->delete();
+      //Find Category
+      return redirect()
+                ->route('admin.index')
+                ->with(['success' => "Post '$post->name':$post_id have been deleted"]);
+    }
+
 
   private function shortenText($text, $limit_char){
     if(str_word_count($text,0)> $limit_char){
