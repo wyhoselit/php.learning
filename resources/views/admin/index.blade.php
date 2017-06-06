@@ -12,32 +12,40 @@
           <nav>
             <ul>
               <li><a href="{{route('admin.blog.create.post')}}" class="btn">New Post</a></li>
-              <li><a href="#" class="btn">Show all Posts</a></li>
+              <li><a href="{{route('admin.blog.post.index')}}" class="btn">Show all Posts</a></li>
             </ul>
           </nav>
         </header>
         <section>
           <ul>
             <!-- If no posts -->
-            <li>No Posts</li>
+            @if(count($posts) == 0)
+              <li class='danger'>No Posts</li>
+
+            @else
+
             <!-- If Posts -->
-            <li>
-              <article class="">
-              <div class="post-info">
-                  <h3>Post Title</h3>
-                  <span class="info">Author | date</span>
-                  <div class="edit">
-                    <nav>
-                      <ul>
-                        <li><a href="#">View Post</a></li>
-                        <li><a href="#">Edit</a></li>
-                        <li><a href="#" class="danger">Delete</a></li>
-                      </ul>
-                    </nav>
-                  </div>
-              </div>
-              </article>
-            </li>
+            @foreach($posts as $post)
+              <li>
+                <article>
+                <div class="post-info">
+                    <h3>{{$post->title}}</h3>
+                    <span class="info">{{$post->author}} | {{$post->create_at}}</span>
+                    <div class="edit">
+                      <nav>
+                        <ul>
+                          <li><a href="#">View Post</a></li>
+                          <li><a href="#">Edit</a></li>
+                          <li><a href="#" class="danger">Delete</a></li>
+                        </ul>
+                      </nav>
+                    </div>
+                </div>
+                </article>
+              </li>
+            @endforeach
+            @endif
+
           </ul>
         </section>
       </div>
