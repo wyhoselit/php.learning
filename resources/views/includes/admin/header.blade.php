@@ -3,7 +3,7 @@
     <ul>
       <li><a href="{{route('admin.index')}}">Dashboard</a></li>
       <li><a href="{{route('admin.blog.post.index')}}">Posts</a></li>
-      <li><a href="#">Categories</a></li>
+      <li><a href="{{route('admin.blog.categories')}}">Categories</a></li>
       <li><a href="#">Contact Message</a></li>
       <li><a href="#">Logout</a></li>
     </ul>

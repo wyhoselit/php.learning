@@ -44,7 +44,10 @@ Route::group([
     'uses' => 'AdminController@getIndex',
     'as' =>'admin.index'
   ]);
-
+  Route::get('blog/categories', [
+    'uses' =>'CategoryController@getCategoryIndex',
+    'as'=> 'admin.blog.categories'
+  ]);
   Route::get('/blog/posts',[
     'uses' => 'PostController@getAdminPost',
     'as' =>'admin.blog.post.index'
