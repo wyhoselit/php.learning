@@ -13,7 +13,7 @@
       <div class="input-group">
         <label for="name">Category Name</label>
           <input type="text" name="name" id="name">
-          <button type="submit" name="btn">Create Category</button>
+          <button type="submit" class="btn">Create Category</button>
       </div>
     </form>
     <section class="list">

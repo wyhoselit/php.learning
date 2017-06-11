@@ -57,14 +57,24 @@ Route::group([
     'uses' => 'PostController@getSingleBlog',
     'as' =>'admin.blog.post'
   ]);
-  Route::get('/blog/posts/create',[
+  Route::get('/blog/post/create',[
     'uses' => 'PostController@getCreatePost',
     'as' =>'admin.blog.create.post'
   ]);
 
-  Route::post('/blog/posts/create',[
+  Route::post('/blog/post/create',[
     'uses' => 'PostController@postCreatePost',
     'as' =>'admin.blog.create.post'
+  ]);
+
+  Route::get('/blog/category/create',[
+    'uses' => 'CategoryController@getCreateCategory',
+    'as' =>'admin.blog.create.category'
+  ]);
+
+  Route::post('/blog/category/create',[
+    'uses' => 'CategoryController@postCreateCategory',
+    'as' =>'admin.blog.create.category'
   ]);
 
   Route::get('/blog/posts/{post_id}/edit',[
