@@ -1,9 +1,9 @@
 <header>
   <nav class="main-nav">
     <ul>
-      <li><a href="{{ route('blog.index')}}">Blog</a></li>
-      <li><a href="{{ route('about') }}">About me</a></li>
-      <li><a href="{{ route('contact.index')}} ">Contact</a></li>
+      <li {{ Request::is('blog')? 'class=active' : '' }}><a href="{{ route('blog.index')}}">Blog</a></li>
+      <li {{ Request::is('about')? 'class=active' : '' }}><a href="{{ route('about') }}">About me</a></li>
+      <li {{ Request::is('contact')? 'class=active' : '' }}><a href="{{ route('contact.index')}} ">Contact</a></li>
     </ul>
   </nav>
 
