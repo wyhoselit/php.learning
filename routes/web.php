@@ -86,10 +86,14 @@ Route::group([
     'uses' => 'PostController@postUpdatePost',
     'as' =>'admin.blog.post.update'
   ]);
+  Route::post('/blog/categories/update',[
+    'uses' => 'CategoryController@postUpdateCategory',
+    'as' => 'admin.blog.category.update'
+  ]);
 
-    Route::get('/blog/posts/{post_id}/delete',[
-      'uses' => 'PostController@getDeletePost',
-      'as' =>'admin.blog.post.delete'
-    ]);
+  Route::get('/blog/posts/{post_id}/delete',[
+    'uses' => 'PostController@getDeletePost',
+    'as' =>'admin.blog.post.delete'
+  ]);
 
 });
